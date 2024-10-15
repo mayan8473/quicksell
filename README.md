@@ -1,70 +1,188 @@
-# Getting Started with Create React App
+### Kanban Board Application
+## Table of Contents
+#Overview
+#Features
+#Design
+#Technologies-Used
+#Installation
+#Usage
+#Project-Structure
+#API-Integration
+#State-Management
+#Styling
+#Persisting-State
+#Evaluation-Criteria
+#Assets
+#Notes
+#Overview
+This project is an interactive Kanban Board application built using React JS. The application fetches ticket data from a provided API and allows users to group and sort tickets based on different criteria. The user interface is designed to be responsive and visually appealing, closely following the provided design specifications.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+#Features
+Dynamic Grouping: Users can group tickets by Status, User, or Priority.
+Sorting Options: Tickets can be sorted by Priority (descending) or Title (ascending).
+Responsive Design: The application is fully responsive and maintains visual integrity across various devices.
+State Persistence: User preferences for grouping and sorting are saved and persist across page reloads.
+Interactive UI: Smooth and intuitive user interactions aligning with the provided design mockups.
+#Design
+The application's design mirrors the provided screenshots, ensuring consistency in layout, card design, and overall aesthetics. The Kanban board adjusts dynamically based on user selections for grouping and sorting, providing a seamless user experience.
 
-## Available Scripts
+Display States
+Grouped by User:
 
-In the project directory, you can run:
+Grouped by Priority:
 
-### `npm start`
+Card View:
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+#Technologies-Used
+React JS: Frontend library for building the user interface.
+Pure CSS: Custom styling without the use of CSS libraries.
+Local Storage: For persisting user state across sessions.
+Fetch API: To retrieve data from the provided backend API.
+#Installation
+Prerequisites
+Node.js (v14 or above)
+npm or yarn
+Steps
+Clone the Repository
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+bash
+Copy code
+git clone https://github.com/your-username/kanban-board.git
+cd kanban-board
+Install Dependencies
 
-### `npm test`
+Using npm:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+bash
+Copy code
+npm install
+Or using yarn:
 
-### `npm run build`
+bash
+Copy code
+yarn install
+Start the Development Server
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Using npm:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+bash
+Copy code
+npm start
+Or using yarn:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+bash
+Copy code
+yarn start
+Access the Application
 
-### `npm run eject`
+Open your browser and navigate to http://localhost:3000 to view the application.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+#Usage
+Grouping Tickets:
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Click on the "Display" button.
+Select a grouping option: By Status, By User, or By Priority.
+The Kanban board will adjust to reflect the selected grouping.
+Sorting Tickets:
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+Choose a sorting option: Priority (descending) or Title (ascending).
+Tickets within each group will reorder based on the selected sorting criteria.
+Persisted State:
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+The application saves your grouping and sorting preferences.
+Reloading the page retains your last selected view.
+#Project-Structure
+csharp
+Copy code
+kanban-board/
+├── public/
+│   ├── index.html
+│   └── assets/
+├── src/
+│   ├── components/
+│   │   ├── KanbanBoard.jsx
+│   │   ├── TicketCard.jsx
+│   │   ├── GroupingOptions.jsx
+│   │   └── SortingOptions.jsx
+│   ├── services/
+│   │   └── api.js
+│   ├── styles/
+│   │   └── styles.css
+│   ├── App.jsx
+│   ├── index.js
+│   └── utils/
+│       └── helpers.js
+├── .gitignore
+├── package.json
+├── README.md
+└── yarn.lock / package-lock.json
+#API-Integration
+The application interacts with the provided API endpoint to fetch ticket data.
 
-## Learn More
+API Endpoint: https://api.quicksell.co/v1/internal/frontend-assignment
+Fetching Data
+Use the fetch API to retrieve data.
+Handle loading states and potential errors during data fetching.
+Data Structure
+Tickets received from the API include:
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+id: Unique identifier
+title: Title of the ticket
+description: Detailed description
+status: Current status (e.g., Open, In Progress, Closed)
+priority: Priority level (0-4)
+assignedUser: User assigned to the ticket
+#State-Management
+Local Component State: Manage component-specific states using React’s useState.
+Global State: Use React's useContext or useReducer if necessary for managing global states.
+Persisting State: Use localStorage to save and retrieve user preferences for grouping and sorting.
+#Styling
+Pure CSS: All styles are written in standard CSS without any libraries.
+Modular CSS: Organize styles into modular and reusable classes.
+Responsive Design: Ensure the application is responsive across different screen sizes using media queries and flexible layouts.
+#Persisting-State
+To ensure user preferences persist across page reloads:
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+Saving State:
 
-### Code Splitting
+On grouping or sorting option change, save the selected options to localStorage.
+Retrieving State:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+On application load, check localStorage for existing preferences.
+Apply the saved preferences to initialize the application's state.
+#Evaluation-Criteria
+Your submission will be evaluated based on the following criteria:
 
-### Analyzing the Bundle Size
+Functionality:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+Effective data fetching from the provided API.
+Accurate grouping and sorting of tickets based on user selections.
+Persistence of user preferences across sessions.
+Visual Design:
 
-### Making a Progressive Web App
+UI matches the provided design screenshots.
+Consistent layout, card design, and overall aesthetics.
+Business Logic Optimization:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+Efficient data handling and state management.
+Minimization of unnecessary re-renders and performance optimizations.
+Component Structuring:
 
-### Advanced Configuration
+Properly structured components promoting reusability and maintainability.
+Clear separation of concerns and modular architecture.
+#Assets
+Design Assets: Download Assets
+#Notes
+CSS Libraries: Do not use any CSS libraries such as Bootstrap, Tailwind, Material UI, Chakra, etc. All styling must be done using pure CSS or Styled JSX.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+Frameworks: Do not use frameworks like Next.js. The application should be built using pure React JS.
 
-### Deployment
+API Priority Levels:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+The API provides priority levels as integers. Map them as follows:
 
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+4: Urgent
+3: High
+2: Medium
+1: Low
+0: No priority
